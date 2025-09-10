@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Telecom Inventory</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<header>
+  <h1>📡 Telecom Inventory</h1>
+  <div id="cart">🛒 Cart: <span id="cartCount">0</span></div>
+  <button id="logoutBtn" title="Logout" style="background:#dc3545;color:white;border:none;padding:6px 12px;border-radius:6px;cursor:pointer;">Logout</button>
+</header>
+
+<div id="notifications"></div>
+<div id="productList" class="product-grid"></div>
+
+<div id="checkoutSection" class="checkout-section hidden">
+  <p>Total: $<span id="totalCost">0</span></p>
+  <button id="checkoutBtn">Checkout</button>
+</div>
+
+<div id="thankYouMessage" class="thankyou-message hidden">
+  <h2>Thank you for your purchase! 🎉</h2>
+  <button id="continueShoppingBtn">Continue Shopping</button>
+</div>
+
+<script src="script-inventory.js"></script>
+</body>
+</html>
