@@ -1,18 +1,12 @@
 const mongoose = require('mongoose');
 
-const ProductSchema = new mongoose.Schema({
+const productSchema = new mongoose.Schema({
   name: { type: String, required: true },
-  category: { type: String },
-  stockLevel: { type: Number, default: 0 },
-  reorderPoint: { type: Number, default: 0 },
-  createdAt: { type: Date, default: Date.now },
-  updatedAt: { type: Date, default: Date.now }
-});
+  category: { type: String, required: true },
+  quantity: { type: Number, required: true },
+  price: { type: Number, required: true },
+  reorderPoint: { type: Number, default: 10 },
+  supplier: { type: mongoose.Schema.Types.ObjectId, ref: 'Supplier' }
+}, { timestamps: true });
 
-// Middleware to update the updatedAt field before saving
-ProductSchema.pre('save', function(next) {
-  this.updatedAt = Date.now();
-  next();
-});
-
-module.exports = mongoose.model('Product', ProductSchema);
+module.exports = mongoose.model('Product', productSchema);

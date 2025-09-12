@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Login - Telecom Inventory</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<div id="loginPage" class="login-container">
+  <div class="login-box">
+    <h2>Login to Telecom Inventory</h2>
+    <input type="text" id="username" placeholder="Username" autocomplete="off" />
+    <input type="password" id="password" placeholder="Password" autocomplete="off" />
+    <button id="loginBtn">Login</button>
+    <p id="loginError"></p>
+  </div>
+</div>
+
+<script>
+  // Background slideshow
+  const loginPage = document.getElementById('loginPage');
+  const backgrounds = [
+    "https://images.pexels.com/photos/1181343/pexels-photo-1181343.jpeg",
+    "https://images.pexels.com/photos/325185/pexels-photo-325185.jpeg",
+    "https://images.pexels.com/photos/373543/pexels-photo-373543.jpeg",
+    "https://images.pexels.com/photos/1054397/pexels-photo-1054397.jpeg"
+  ];
+  let bgIndex = 0;
+  loginPage.style.backgroundImage = `url(${backgrounds[bgIndex]})`;
+  setInterval(() => {
+    bgIndex = (bgIndex + 1) % backgrounds.length;
+    loginPage.style.backgroundImage = `url(${backgrounds[bgIndex]})`;
+  }, 4000);
+
+  // Login logic
+  const loginBtn = document.getElementById('loginBtn');
+  const loginError = document.getElementById('loginError');
+
+  loginBtn.addEventListener('click', () => {
+    const user = document.getElementById('username').value.trim().toLowerCase();
+    const pass = document.getElementById('password').value.trim();
+
+    // ✅ Correct login credentials
+    if(user === 'user' && pass === '1234') {
+      localStorage.setItem('loggedIn', 'true');
+      window.location.href = 'inventory.html';
+    } else {
+      loginError.textContent = '❌ Invalid username or password!';
+    }
+  });
+</script>
+</body>
+</html>

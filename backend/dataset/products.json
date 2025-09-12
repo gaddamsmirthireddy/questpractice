@@ -1,0 +1,37 @@
+[
+  {
+    "name": "Cisco Router 2901",
+    "category": "Router",
+    "quantity": 5,
+    "price": 1200,
+    "img": "https://images.pexels.com/photos/4610641/pexels-photo-4610641.jpeg"
+  },
+  {
+    "name": "Juniper MX204 Router",
+    "category": "Router",
+    "quantity": 2,
+    "price": 3500,
+    "img": "https://images.pexels.com/photos/373543/pexels-photo-373543.jpeg"
+  },
+  {
+    "name": "Cisco Catalyst 2960 Switch",
+    "category": "Switch",
+    "quantity": 0,
+    "price": 800,
+    "img": "https://images.pexels.com/photos/1181402/pexels-photo-1181402.jpeg"
+  },
+  {
+    "name": "Aruba 2530 Switch",
+    "category": "Switch",
+    "quantity": 4,
+    "price": 600,
+    "img": "https://images.pexels.com/photos/3735431/pexels-photo-3735431.jpeg"
+  },
+  {
+    "name": "Ubiquiti UniFi AP",
+    "category": "Access Point",
+    "quantity": 10,
+    "price": 150,
+    "img": "https://images.pexels.com/photos/1041621/pexels-photo-1041621.jpeg"
+  }
+]
