@@ -1,7 +1,7 @@
 const jwt = require("jsonwebtoken");
 
 // Middleware to verify JWT
-exports.protect = (req, res, next) => {
+exports.authenticate = (req, res, next) => {
   const authHeader = req.headers.authorization;
   if (!authHeader || !authHeader.startsWith("Bearer ")) {
     return res.status(401).json({ success: false, error: "Not authorized, token missing" });

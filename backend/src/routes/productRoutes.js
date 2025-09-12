@@ -10,13 +10,25 @@ router.get('/', productController.getAllProducts);
 router.get('/:id', productController.getProductById);
 
 // Create a new product (protected route - only Admin and Manager)
-router.post('/', authMiddleware.authorize(['Admin', 'Manager']), productController.createProduct);
+router.post('/', 
+    authMiddleware.authenticate,
+    authMiddleware.authorize(['Admin', 'Manager']), 
+    productController.createProduct
+);
 
 // Update a product (protected route - only Admin and Manager)
-router.put('/:id', authMiddleware.authorize(['Admin', 'Manager']), productController.updateProduct);
+router.put('/:id', 
+    authMiddleware.authenticate,
+    authMiddleware.authorize(['Admin', 'Manager']), 
+    productController.updateProduct
+);
 
 // Delete a product (protected route - only Admin)
-router.delete('/:id', authMiddleware.authorize(['Admin']), productController.deleteProduct);
+router.delete('/:id', 
+    authMiddleware.authenticate,
+    authMiddleware.authorize(['Admin']), 
+    productController.deleteProduct
+);
 
 // Update stock level (protected route - all authenticated users)
 router.patch('/:id/stock', authMiddleware.authenticate, productController.updateStockLevel);
