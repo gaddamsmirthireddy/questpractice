@@ -1,6 +1,7 @@
 // backend/src/server.js
 require('dotenv').config();
 const express = require('express');
+const mongoose = require('mongoose');
 const connectDB = require('./config/db');
 const app = express();
 
@@ -22,6 +23,32 @@ const supplierRoutes = require('./routes/supplierRoutes');
 app.use('/api/auth', authRoutes);
 app.use('/api/products', productRoutes);
 app.use('/api/suppliers', supplierRoutes);
+
+// Health check endpoint
+app.get('/health', async (req, res) => {
+  try {
+    // Check database connection
+    const dbStatus = mongoose.connection.readyState === 1 ? 'connected' : 'disconnected';
+    
+    res.status(200).json({
+      success: true,
+      timestamp: new Date(),
+      service: 'Backend API',
+      status: 'running',
+      database: {
+        status: dbStatus
+      }
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      timestamp: new Date(),
+      service: 'Backend API',
+      status: 'error',
+      error: error.message
+    });
+  }
+});
 
 // Start server
 const PORT = process.env.PORT || 5000;
